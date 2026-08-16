@@ -39,7 +39,7 @@ export default function Header() {
               />
             </div>
             <div className="flex items-center gap-2 text-lg font-black tracking-tight sm:text-xl">
-              <span className="text-blue-700">Global</span>
+              <span className="text-[#0d7bc8]">Global</span>
               <span className="text-red-600">Services</span>
             </div>
             <span className="hidden text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 sm:block">SARL</span>
@@ -50,22 +50,22 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm font-semibold text-slate-700 transition hover:text-blue-700"
+                className="relative text-sm font-semibold text-slate-700 transition hover:text-[#0d7bc8]"
               >
                 {t(item.key)}
-                <span className="absolute -bottom-2 left-0 h-0.5 w-full origin-left scale-x-0 bg-blue-700 transition-transform duration-300 hover:scale-x-100" />
+                <span className="absolute -bottom-2 left-0 h-0.5 w-full origin-left scale-x-0 bg-[#0d7bc8] transition-transform duration-300 hover:scale-x-100" />
               </Link>
             ))}
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
-            <a href="tel:+243979000444" className="text-sm font-medium text-slate-600 transition hover:text-blue-700">
+            <a href="tel:+243979000444" className="text-sm font-medium text-slate-600 transition hover:text-[#0d7bc8]">
               {t("nav.phone")}
             </a>
             <a
               href={quoteMailto}
-              className="inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-800"
+              className="inline-flex items-center justify-center rounded-full bg-[#0d7bc8] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0a6db2]"
             >
               {t("nav.quote")}
             </a>
