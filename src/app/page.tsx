@@ -12,7 +12,9 @@ import {
   HardHat,
   MapPinned,
   ShieldCheck,
+  TimerReset,
   Truck,
+  Wrench,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -92,32 +94,28 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        <section className="relative overflow-hidden bg-[#eaf3ff] text-slate-900">
-          <div className="absolute inset-0">
+      <main className="bg-slate-950">
+        <section className="relative -mt-14 overflow-hidden bg-slate-950 pt-14 text-white">
+          <div className="absolute inset-0 top-0">
             <Image
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
               alt="Industrial background"
               fill
-              className="scale-105 object-cover opacity-25"
+              className="scale-105 object-cover opacity-30"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#dfeeff] via-[#edf5ff]/90 to-[#dfeeff]/75" />
-            <div className="absolute inset-0 bg-slate-900/5" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/75" />
           </div>
 
           <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
             <div className="flex flex-col justify-center animate-fade-up">
-              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/85 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0d7bc8] shadow-sm ring-1 ring-slate-200">
-                <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
-                {t("home.badge")}
-              </div>
+              <div className="mb-6 h-0" aria-hidden="true" />
 
-              <h1 className="max-w-2xl text-3xl font-extrabold tracking-[-0.04em] text-slate-900 sm:text-4xl lg:text-[3.5rem]">
+              <h1 className="max-w-2xl text-3xl font-extrabold tracking-[-0.04em] text-white sm:text-4xl lg:text-[3.5rem]">
                 {t("home.title")}
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">{t("home.description")}</p>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">{t("home.description")}</p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
@@ -135,18 +133,27 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl bg-white/90 p-3 shadow-sm ring-1 ring-slate-200">
-                  <div className="text-2xl font-black text-[#0d7bc8]">12+</div>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.15em] text-slate-600">{t("home.statOne")}</p>
+              <div className="mt-10 grid gap-2.5 sm:grid-cols-3">
+                <div className="rounded-xl bg-white/90 p-2.5 shadow-sm ring-1 ring-slate-200">
+                  <div className="flex items-center gap-2 text-[#0d7bc8]">
+                    <Wrench size={14} className="shrink-0" />
+                    <span className="text-xl font-black">12+</span>
+                  </div>
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-600">{t("home.statOne")}</p>
                 </div>
-                <div className="rounded-2xl bg-white/90 p-3 shadow-sm ring-1 ring-slate-200">
-                  <div className="text-2xl font-black text-red-600">DRC</div>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.15em] text-slate-600">{t("home.statTwo")}</p>
+                <div className="rounded-xl bg-white/90 p-2.5 shadow-sm ring-1 ring-slate-200">
+                  <div className="flex items-center gap-2 text-red-600">
+                    <MapPinned size={14} className="shrink-0" />
+                    <span className="text-xl font-black">DRC</span>
+                  </div>
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-600">{t("home.statTwo")}</p>
                 </div>
-                <div className="rounded-2xl bg-white/90 p-3 shadow-sm ring-1 ring-slate-200">
-                  <div className="text-2xl font-black text-slate-900">24/7</div>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.15em] text-slate-600">{t("home.statThree")}</p>
+                <div className="rounded-xl bg-white/90 p-2.5 shadow-sm ring-1 ring-slate-200">
+                  <div className="flex items-center gap-2 text-slate-900">
+                    <TimerReset size={14} className="shrink-0" />
+                    <span className="text-xl font-black">24/7</span>
+                  </div>
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-600">{t("home.statThree")}</p>
                 </div>
               </div>
             </div>

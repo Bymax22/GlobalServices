@@ -26,9 +26,9 @@ export default function Header() {
     );
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0d7bc8] shadow-[0_10px_30px_rgba(13,123,200,0.18)] backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between rounded-full bg-white/96 px-4 py-2 shadow-lg shadow-slate-950/10 sm:px-6 sm:py-2.5">
+    <header className="sticky top-0 z-50 bg-transparent backdrop-blur-none">
+      <div className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between rounded-full bg-white px-4 py-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:px-6 sm:py-2.5">
           <Link href="/" className="flex items-center gap-3" aria-label="Global Services homepage">
             <div className="relative h-11 w-11 overflow-hidden rounded-full bg-slate-100 ring-1 ring-slate-200 sm:h-12 sm:w-12">
               <Image

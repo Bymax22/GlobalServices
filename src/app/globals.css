@@ -28,9 +28,13 @@ html {
   scroll-behavior: smooth;
 }
 
+html {
+  background: #020817;
+}
+
 body {
   margin: 0;
-  background: var(--background);
+  background: #020817;
   color: var(--foreground);
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   line-height: 1.6;
