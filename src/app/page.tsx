@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,6 +15,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/language";
 
 const sectors = [
   {
@@ -53,76 +56,86 @@ const process = [
 ];
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Header />
       <main>
-        <section className="bg-slate-950 text-white">
-          <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
-            <div className="flex flex-col justify-center animate-fade-up">
-              <span className="mb-5 inline-flex w-fit items-center rounded-full bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
-                Trusted partner in the DRC
-              </span>
+        <section className="relative overflow-hidden bg-slate-950 text-white">
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
+              alt="Industrial background"
+              fill
+              className="object-cover opacity-20"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/70" />
+          </div>
 
-              <h1 className="max-w-xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Mining, industrial, and infrastructure solutions that move business forward.
+          <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
+            <div className="flex flex-col justify-center animate-fade-up">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/8 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
+                <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
+                {t("home.badge")}
+              </div>
+
+              <h1 className="max-w-2xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {t("home.title")}
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                Delivering high-quality chemical and industrial supplies, civil works, machinery services,
-                and multi-sector solutions across the Democratic Republic of Congo with integrity, safety,
-                and operational excellence.
-              </p>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">{t("home.description")}</p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href="/services"
                   className="inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3.5 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800"
                 >
-                  Explore services
+                  {t("home.primaryCta")}
                   <ArrowRight className="ml-2" size={18} />
                 </Link>
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-semibold text-slate-900 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
                 >
-                  Speak to our team
+                  {t("home.secondaryCta")}
                 </Link>
               </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                <div>
+                <div className="rounded-2xl bg-white/5 p-4">
                   <div className="text-3xl font-black text-blue-400">12+</div>
-                  <p className="mt-2 text-sm text-slate-300">Core service lines</p>
+                  <p className="mt-2 text-sm text-slate-300">{t("home.statOne")}</p>
                 </div>
-                <div>
+                <div className="rounded-2xl bg-white/5 p-4">
                   <div className="text-3xl font-black text-red-400">DRC</div>
-                  <p className="mt-2 text-sm text-slate-300">Local market focus</p>
+                  <p className="mt-2 text-sm text-slate-300">{t("home.statTwo")}</p>
                 </div>
-                <div>
+                <div className="rounded-2xl bg-white/5 p-4">
                   <div className="text-3xl font-black text-white">24/7</div>
-                  <p className="mt-2 text-sm text-slate-300">Operational support</p>
+                  <p className="mt-2 text-sm text-slate-300">{t("home.statThree")}</p>
                 </div>
               </div>
             </div>
 
             <div className="relative animate-float-soft">
-              <div className="absolute -left-6 top-8 h-28 w-28 rounded-full bg-blue-600/30 blur-3xl" />
+              <div className="absolute -left-6 top-10 h-28 w-28 rounded-full bg-blue-600/30 blur-3xl" />
               <div className="absolute -right-8 bottom-8 h-28 w-28 rounded-full bg-red-500/30 blur-3xl" />
-              <div className="relative overflow-hidden rounded-4xl bg-slate-900 shadow-2xl">
+              <div className="relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-2xl shadow-slate-950/40">
                 <Image
                   src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
                   alt="Mining and industrial operations"
                   width={1200}
                   height={900}
-                  className="h-145 w-full object-cover"
+                  className="h-[540px] w-full object-cover"
                   priority
                 />
-                <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white p-5 text-slate-900 shadow-xl">
+                <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white p-5 text-slate-900 shadow-xl">
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Operations</p>
-                      <p className="mt-2 text-xl font-black text-slate-900">Industrial reliability</p>
+                      <p className="mt-2 text-xl font-black text-slate-900">{t("home.overlayTitle")}</p>
                     </div>
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-700">
                       <Truck size={22} />
@@ -136,24 +149,27 @@ export default function Home() {
 
         <section className="bg-white py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-4xl bg-slate-100 p-8 md:p-10">
-              <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-[2rem] bg-slate-100 p-6 sm:p-8 lg:p-10">
+              <div className="grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Company profile</p>
-                  <h2 className="mt-3 text-3xl font-black text-slate-900">Built around integrity, safety, and service.</h2>
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Company profile</p>
+                  <h2 className="mt-3 max-w-md text-2xl font-black leading-tight text-slate-900 sm:text-3xl">
+                    Built around integrity, safety, and service.
+                  </h2>
                 </div>
-                <div className="md:col-span-2 grid gap-6 sm:grid-cols-3">
-                  <div>
-                    <div className="text-3xl font-black text-blue-700">ID.NAT</div>
-                    <p className="mt-2 text-sm text-slate-600">6-490-N14709R</p>
+
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-2xl bg-white p-4 shadow-sm shadow-slate-200/70">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-700">ID.NAT</p>
+                    <p className="mt-3 text-base font-bold text-slate-900">6-490-N14709R</p>
                   </div>
-                  <div>
-                    <div className="text-3xl font-black text-red-600">RCCM</div>
-                    <p className="mt-2 text-sm text-slate-600">LSHI/RCCM/16-B-4265</p>
+                  <div className="rounded-2xl bg-white p-4 shadow-sm shadow-slate-200/70">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-600">RCCM</p>
+                    <p className="mt-3 text-base font-bold text-slate-900">LSHI/RCCM/16-B-4265</p>
                   </div>
-                  <div>
-                    <div className="text-3xl font-black text-slate-900">NIF</div>
-                    <p className="mt-2 text-sm text-slate-600">A1809847Z</p>
+                  <div className="rounded-2xl bg-white p-4 shadow-sm shadow-slate-200/70">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-700">NIF</p>
+                    <p className="mt-3 text-base font-bold text-slate-900">A1809847Z</p>
                   </div>
                 </div>
               </div>

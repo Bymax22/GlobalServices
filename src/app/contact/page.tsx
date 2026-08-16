@@ -30,7 +30,7 @@ export default function ContactPage() {
     );
 
     window.location.href = `mailto:info@globalservices.com?subject=${subject}&body=${body}`;
-    setStatus("Your email app is opening with your inquiry details. You can send it directly to continue.");
+    setStatus("Your email app is opening with your inquiry details. Please send the message to complete the quote request.");
   };
 
   return (
@@ -112,7 +112,11 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {status && <p className="text-sm text-blue-700">{status}</p>}
+                {status && (
+                  <p aria-live="polite" className="text-sm text-blue-700">
+                    {status}
+                  </p>
+                )}
 
                 <button
                   type="submit"
