@@ -101,10 +101,11 @@ export default function Home() {
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
               alt="Industrial background"
               fill
-              className="scale-105 object-cover opacity-30"
+              className="scale-105 object-cover opacity-55"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/75" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-900/65" />
+            <div className="absolute inset-y-0 right-0 w-2/5 bg-gradient-to-l from-slate-900/50 via-slate-900/20 to-transparent" />
           </div>
 
           <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
