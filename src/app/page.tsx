@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -55,8 +56,38 @@ const process = [
   "Deliver and monitor with quality assurance",
 ];
 
+const heroShowcase = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    label: "Operations",
+    title: "Industrial reliability built for every service line.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80",
+    label: "Installation",
+    title: "End-to-end project execution with technical precision.",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    label: "Infrastructure",
+    title: "Reliable delivery across civil, industrial, and field works.",
+  },
+];
+
 export default function Home() {
   const { t } = useLanguage();
+  const [activeHeroCard, setActiveHeroCard] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveHeroCard((current) => (current + 1) % heroShowcase.length);
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -68,10 +99,11 @@ export default function Home() {
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
               alt="Industrial background"
               fill
-              className="object-cover opacity-12"
+              className="scale-105 object-cover opacity-25"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#eaf3ff] via-[#edf5ff]/90 to-[#dfeeff]/80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#dfeeff] via-[#edf5ff]/90 to-[#dfeeff]/75" />
+            <div className="absolute inset-0 bg-slate-900/5" />
           </div>
 
           <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
@@ -124,22 +156,33 @@ export default function Home() {
               <div className="absolute -right-8 bottom-8 h-28 w-28 rounded-full bg-red-400/20 blur-3xl" />
               <div className="relative overflow-hidden rounded-[2rem] bg-slate-900 shadow-[0_32px_60px_rgba(15,23,42,0.12)] ring-1 ring-slate-200">
                 <Image
-                  src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-                  alt="Mining and industrial operations"
+                  key={heroShowcase[activeHeroCard].image}
+                  src={heroShowcase[activeHeroCard].image}
+                  alt={heroShowcase[activeHeroCard].label}
                   width={1200}
                   height={900}
-                  className="h-[540px] w-full object-cover"
+                  className="h-[540px] w-full object-cover transition-all duration-500"
                   priority
                 />
                 <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white/96 p-5 text-slate-900 shadow-xl ring-1 ring-slate-200 backdrop-blur-sm">
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">Operations</p>
-                      <p className="mt-2 text-xl font-black text-slate-900">Industrial reliability built for every service line.</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">{heroShowcase[activeHeroCard].label}</p>
+                      <p className="mt-2 text-xl font-black text-slate-900">{heroShowcase[activeHeroCard].title}</p>
                     </div>
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eaf5ff] text-[#0d7bc8]">
                       <Truck size={22} />
                     </div>
+                  </div>
+                  <div className="mt-4 flex gap-2">
+                    {heroShowcase.map((slide, index) => (
+                      <span
+                        key={slide.label}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          index === activeHeroCard ? "w-8 bg-[#0d7bc8]" : "w-2 bg-slate-300"
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
