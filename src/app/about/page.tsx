@@ -1,42 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/language";
 
 const management = [
   {
-    name: "Leadership & Strategy",
-    role: "Executive oversight",
-    text: "Guiding the company with a clear strategic vision, strong governance, and disciplined commercial decisions that prioritize long-term partnership value.",
+    nameKey: "about.leadership",
+    roleKey: "about.leadershipRole",
+    textKey: "about.leadershipText",
   },
   {
-    name: "Operations & Delivery",
-    role: "Project execution",
-    text: "Coordinating supply chains, field operations, and project delivery across mining, industrial, and infrastructure assignments with accountability and efficiency.",
+    nameKey: "about.operations",
+    roleKey: "about.operationsRole",
+    textKey: "about.operationsText",
   },
   {
-    name: "Quality & Compliance",
-    role: "Safety and standards",
-    text: "Ensuring every engagement follows strong operational standards, procurement discipline, and performance controls that protect our clients and teams.",
+    nameKey: "about.quality",
+    roleKey: "about.qualityRole",
+    textKey: "about.qualityText",
   },
-];
-
-const values = [
-  "Integrity and transparency in every engagement",
-  "Quality delivery across all operations and sectors",
-  "Professionalism supported by accountability and respect",
-  "Partnerships grounded in trust and long-term value",
-  "Sustainability and local development at the core of our work",
 ];
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Header />
       <main>
         <section className="bg-slate-950 py-20 text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">About Global Services SARL</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">Committed to trusted governance and sustainable growth.</h1>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">{t("about.heroLabel")}</p>
+            <h1 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-[-0.04em] md:text-5xl">{t("about.heroTitle")}</h1>
           </div>
         </section>
 
@@ -53,18 +50,10 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col justify-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">Our background</p>
-              <h2 className="mt-4 text-3xl font-black text-slate-900 md:text-4xl">A Congolese company built for multi-sector impact.</h2>
-              <p className="mt-6 text-lg leading-8 text-slate-600">
-                Global Services SARL is a Congolese-owned, multi-sector company established to support the rapid
-                development of key industries within the Democratic Republic of Congo. Since its foundation, the company
-                has expanded its service portfolio and operational reach while maintaining a strong client-focused approach.
-              </p>
-              <p className="mt-4 text-lg leading-8 text-slate-600">
-                Through disciplined execution, strong local knowledge, and dependable partnerships, we continue to position
-                ourselves as a trusted service provider for mining companies, contractors, traders, agribusiness operators,
-                and institutional clients.
-              </p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">{t("about.backgroundLabel")}</p>
+              <h2 className="mt-4 text-2xl font-extrabold text-slate-900 md:text-3xl">{t("about.backgroundTitle")}</h2>
+              <p className="mt-6 text-lg leading-8 text-slate-600">{t("about.intro")}</p>
+              <p className="mt-4 text-lg leading-8 text-slate-600">{t("about.intro2")}</p>
             </div>
           </div>
         </section>
@@ -72,19 +61,19 @@ export default function AboutPage() {
         <section className="bg-slate-50 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">Company values & management</p>
-              <h2 className="mt-4 text-3xl font-black text-slate-900 md:text-5xl">Strong leadership backed by practical values and responsible execution.</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">{t("about.valuesLabel")}</p>
+              <h2 className="mt-4 text-2xl font-extrabold text-slate-900 md:text-4xl">{t("about.valueTitle")}</h2>
             </div>
 
             <div className="mt-10 grid gap-8 md:grid-cols-3">
               {management.map((item) => (
-                <div key={item.name} className="rounded-4xl bg-white p-8 shadow-sm">
-                  <div className="mb-5 h-12 w-12 rounded-full bg-blue-700 text-lg font-black text-white flex items-center justify-center">
-                    {item.name.charAt(0)}
+                <div key={item.nameKey} className="rounded-4xl bg-white p-8 shadow-sm">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-blue-700 text-lg font-black text-white">
+                    {t(item.nameKey).charAt(0)}
                   </div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{item.role}</p>
-                  <h3 className="mt-3 text-2xl font-black text-slate-900">{item.name}</h3>
-                  <p className="mt-4 text-base leading-7 text-slate-600">{item.text}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t(item.roleKey)}</p>
+                  <h3 className="mt-3 text-2xl font-black text-slate-900">{t(item.nameKey)}</h3>
+                  <p className="mt-4 text-base leading-7 text-slate-600">{t(item.textKey)}</p>
                 </div>
               ))}
             </div>
@@ -94,29 +83,23 @@ export default function AboutPage() {
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-600">Vision, mission & values</p>
-              <h2 className="mt-4 text-3xl font-black text-slate-900 md:text-5xl">Purpose-driven execution, built for long-term value.</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-600">{t("about.visionLabel")}</p>
+              <h2 className="mt-4 text-2xl font-extrabold text-slate-900 md:text-4xl">{t("about.purposeTitle")}</h2>
             </div>
 
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               <div className="rounded-4xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
-                <h3 className="text-2xl font-black text-slate-900">Vision</h3>
-                <p className="mt-4 text-lg leading-8 text-slate-600">
-                  To be a leading Congolese multi-sector services company recognized for excellence, integrity,
-                  and meaningful contribution to the sustainable development of the Democratic Republic of Congo.
-                </p>
+                <h3 className="text-2xl font-black text-slate-900">{t("about.visionTitle")}</h3>
+                <p className="mt-4 text-lg leading-8 text-slate-600">{t("about.visionText")}</p>
               </div>
               <div className="rounded-4xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
-                <h3 className="text-2xl font-black text-slate-900">Mission</h3>
-                <p className="mt-4 text-lg leading-8 text-slate-600">
-                  To provide high-quality supplies, construction services, agropastoral solutions, and professional
-                  facilitation by leveraging local expertise, strong partnerships, and a commitment to compliance.
-                </p>
+                <h3 className="text-2xl font-black text-slate-900">{t("about.missionTitle")}</h3>
+                <p className="mt-4 text-lg leading-8 text-slate-600">{t("about.missionText")}</p>
               </div>
             </div>
 
             <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-              {values.map((value) => (
+              {t("about.valueItems").split("|").map((value) => (
                 <div key={value} className="rounded-3xl bg-slate-100 p-5 shadow-sm">
                   <div className="mb-3 h-2.5 w-12 rounded-full bg-blue-700" />
                   <p className="text-base leading-7 text-slate-700">{value}</p>

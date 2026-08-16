@@ -40,7 +40,7 @@ export default function ContactPage() {
         <section className="bg-slate-950 py-20 text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">Contact us</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-tight md:text-6xl">Tell us what you need. We’ll help you build the right solution.</h1>
+            <h1 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-[-0.04em] md:text-5xl">Tell us what you need. We’ll help you build the right solution.</h1>
           </div>
         </section>
 
@@ -63,7 +63,7 @@ export default function ContactPage() {
             </div>
 
             <div className="rounded-4xl bg-white p-8 shadow-sm ring-1 ring-slate-200 md:p-10">
-              <h2 className="text-3xl font-black text-slate-900">Request a quote</h2>
+              <h2 className="text-2xl font-extrabold text-slate-900">Request a quote</h2>
               <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                 <div>
                   <label className="mb-2 block text-sm font-medium text-slate-700">Full name</label>
